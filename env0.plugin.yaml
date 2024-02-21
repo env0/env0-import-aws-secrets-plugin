@@ -1,0 +1,35 @@
+name: JSON plugin
+icon: https://lordicon.com/icons/wired/outline/1320-json.svg
+inputs:
+  secret_prefix:
+    description: The secret prefix to recognize the secret format
+    required: true
+  secret_aws_region:
+    description: AWS region where secrets live
+    required: true
+
+run:
+  exec: |
+    # echo "Displaying contents of env0.env-vars.json:"
+    # cat env0.env-vars.json
+
+    echo "Exporting secret prefix and AWS region"
+    export SECRET_PREFIX="${inputs.secret_prefix}"
+    export SECRET_AWS_REGION="${inputs.secret_aws_region}"
+    echo "SECRET_PREFIX set to: $SECRET_PREFIX"
+    echo "SECRET_AWS_REGION set to: $SECRET_AWS_REGION"
+
+    echo "Cloning repository"
+    git clone --depth=1 --single-branch https://github.com/env0/env0-import-aws-secrets-plugin
+    echo "Repository cloned successfully"
+
+    echo "Installing dependencies from requirements.txt"
+    pip3 install -r env0-json-plugin/requirements.txt
+    echo "Dependencies installed successfully"
+
+    echo "Running the Python script"
+    python env0-json-plugin/run.py
+    echo "Python script execution complete"
+
+    # echo "Contents of the file pointed by ENV0_ENV:"
+    # cat $ENV0_ENV
