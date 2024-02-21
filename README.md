@@ -1,4 +1,4 @@
-# Jenv0 Import AWS Secrets Plugin
+# Env0 Import AWS Secrets Plugin
 This plugin will fetch output values from AWS Secrets Manager and insert them as terraform and/or environment variables.
 
 # Example Usage
