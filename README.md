@@ -11,7 +11,7 @@ deploy:
     setupVariables:
       after:
         - name: Import AWS Secrets Plugin
-          use: [https://github.com/Constantine19/env0-json-plugin](https://github.com/env0/env0-import-aws-secrets-plugin)
+          use: https://github.com/env0/env0-import-aws-secrets-plugin
           inputs:
             secret_prefix: kosta_ssm
             secret_aws_region: us-east-1
